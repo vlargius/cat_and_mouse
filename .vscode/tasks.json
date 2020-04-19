@@ -1,0 +1,62 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "build client",
+            "command": "clang++.exe",
+            "args": [
+                "-std=c++17",
+                "${workspaceFolder}/source/client.cpp",
+                "${workspaceFolder}/source/game.cpp",
+                "${workspaceFolder}/lib/socklib/*.cpp",
+                "-I${workspaceFolder}/lib/SDL2-2.0.12/include",
+                "-L${workspaceFolder}/lib/SDL2-2.0.12/lib/x64",
+                "-static",
+                "-lSDL2main",
+                "-static",
+                "-lSDL2",
+                "-static",
+                "-lws2_32",
+                "-o",
+                "${workspaceFolder}/build/client.exe",
+                "-D_CRT_SECURE_NO_WARNINGS",
+                "-DWIN",
+                // "-g"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "build server",
+            "command": "clang++.exe",
+            "args": [
+                "-std=c++17",
+                "${workspaceFolder}/source/server.cpp",
+                "${workspaceFolder}/source/game.cpp",
+                "${workspaceFolder}/lib/socklib/*.cpp",
+                "-I${workspaceFolder}/lib/SDL2-2.0.12/include",
+                "-L${workspaceFolder}/lib/SDL2-2.0.12/lib/x64",
+                "-static",
+                "-lSDL2main",
+                "-static",
+                "-lSDL2",
+                "-static",
+                "-lws2_32",
+                "-o",
+                "${workspaceFolder}/build/server.exe",
+                "-DWIN",
+                // "-g"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ],
+    "version": "2.0.0"
+}
